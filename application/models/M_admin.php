@@ -133,11 +133,12 @@ class M_admin extends CI_Model
         return $this->db->get();
     }
 
-    public function get_mengajar()
+    public function get_mengajar($kelas)
     {
         $this->db->select('*');
         $this->db->from('mengajar');
         $this->db->join('pelajaran', 'pelajaran.kode_pelajaran = mengajar.kode_pelajaran');
+        $this->db->where('pelajaran.id_kelas', $kelas);
         return $this->db->get();
     }
     public function get_pelajaran()

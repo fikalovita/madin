@@ -393,7 +393,7 @@ class Guru extends CI_Controller
     {
         $data = [
             'siswa' => $this->M_guru->get_siswa(),
-            'jilid' => $this->M_guru->siswa_jilid()->result()
+            'jilid' => $this->M_guru->get_jilid()->result()
         ];
         $this->load->view('guru/layout/header');
         $this->load->view('guru/jilid', $data);
@@ -403,13 +403,17 @@ class Guru extends CI_Controller
     {
         $jilid = $this->input->post('jilid');
         $id_siswa = $this->input->post('id_siswa');
+        // var_dump($jilid);
+        // var_dump($id_siswa);
         $data = [
             'id_jilid' => $jilid
         ];
+        // var_dump($data);
+        // die();
 
         $this->M_guru->tambah_jilid($data, $id_siswa);
-        $this->session->set_flashdata('pesan', 'disimpan');
-        redirect('guru/jilid/', 'refresh');
+        // $this->session->set_flashdata('pesan', 'disimpan');
+        // redirect('guru/jilid/', 'refresh');
     }
 
     public function hapus_jilid($id_siswa)

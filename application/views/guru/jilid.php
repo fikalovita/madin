@@ -9,7 +9,6 @@
                             Form Input Jilid
                         </div>
                         <div class="col-md-6">
-                            <button type="submit" class="btn  btn-sm btn-success  float-end"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
                         </div>
                     </div>
                 </div>
@@ -30,16 +29,11 @@
                                     <th class="text-center"><?= $no++ ?></th>
                                     <td><?= $siswa->nama_siswa ?></td>
                                     <td>
-                                        <select class="form-select" name="jilid">
-                                            <option value="">--Pilih Jilid--</option>
-                                            <?php foreach ($jilid as $key => $value) {
-                                                if ($value->id_jilid === $siswa->id_jilid) {
-                                                    echo '<option value=" ' . $value->id_jilid . '" selected> ' . $value->nama_jilid . '</option>';
-                                                } else {
-                                                    echo '<option value=" ' . $value->id_jilid . '">' . $value->nama_jilid . '</option>';
-                                                }
-                                            }
-                                            ?>
+                                        <select class="form-select" aria-label="Default select example" name="jilid">
+                                            <option value="">--Pilih jilid--</option>
+                                            <?php foreach ($jilid as $key => $value) : ?>
+                                                <option value="<?= $value->id_jilid ?>"><?= $value->nama_jilid ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <input type="hidden" name="id_siswa" value="<?= $siswa->id_siswa ?>">
                                     </td>
@@ -48,6 +42,7 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <button type="submit" class="btn  btn-sm btn-success  float-end"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
                 </div>
             </div>
         </form>
